@@ -16,7 +16,7 @@ Download the installer for your system from the [Releases page](../../releases):
 | System | File |
 |---|---|
 | Windows | `Notetaker Setup x.y.z.exe` |
-| macOS | `Notetaker-x.y.z.dmg` |
+| macOS (Apple Silicon only, M1 or later) | `Notetaker-x.y.z-arm64.dmg` |
 | Linux | `Notetaker-x.y.z.AppImage` |
 
 The installers are **not code-signed**, so expect warnings:
@@ -37,7 +37,7 @@ Screenshots are never written to disk. Only the generated note text is saved.
 | Platform | Status |
 |---|---|
 | Windows 11 | Developed and tested here |
-| macOS | Written but **untested**. Newer macOS versions may not honor the screen-share hiding for some capture apps |
+| macOS | Written but **untested**, and the download is Apple Silicon only (no Intel build). Newer macOS versions may not honor the screen-share hiding for some capture apps |
 | Linux | **Untested**. Global hotkeys and screen capture do not work on Wayland, and window hiding is not supported |
 
 The hiding stops software capture only. A camera pointed at your screen still sees it.
