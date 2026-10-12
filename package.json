@@ -1,0 +1,44 @@
+{
+  "name": "notetaker",
+  "version": "1.0.0",
+  "description": "Press a hotkey to take notes from your screen, hidden from screen share. Runs locally with Ollama or with Claude.",
+  "main": "main.js",
+  "author": "Abinash Gogoi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abinashstack/notetaker.git"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "io.github.abinashstack.notetaker",
+    "productName": "Notetaker",
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "renderer.js"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.productivity"
+    },
+    "linux": {
+      "target": "AppImage",
+      "category": "Utility"
+    },
+    "publish": {
+      "provider": "github"
+    }
+  },
+  "devDependencies": {
+    "electron": "^44.7.0",
+    "electron-builder": "^26.0.0"
+  }
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'">
+<title>Notetaker</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Segoe UI', system-ui, sans-serif; background: #fdf6ec; color: #3b3030; height: 100vh; display: flex; flex-direction: column; }
+  header { -webkit-app-region: drag; display: flex; align-items: center; gap: 6px; padding: 8px 10px; background: #f6e3c8; }
+  header h1 { font-size: 14px; margin: 0; flex: 1; }
+  button, select, input { -webkit-app-region: no-drag; font: inherit; }
+  button { border: 0; border-radius: 10px; padding: 6px 10px; background: #fff; cursor: pointer; box-shadow: 0 1px 2px #0002; }
+  button:hover { background: #fff3df; }
+  button.primary { background: #ff9eb5; color: #fff; font-weight: 600; }
+  #status { padding: 4px 12px; font-size: 12px; min-height: 22px; color: #8a6d5a; }
+  #list { flex: 1; overflow-y: auto; padding: 8px 12px 14px; display: flex; flex-direction: column; gap: 12px; }
+  .card { border-radius: 14px; padding: 12px 14px; box-shadow: 0 3px 8px #0002; transform: rotate(-0.4deg); }
+  .card:nth-child(4n+1) { background: #fff1a8; }
+  .card:nth-child(4n+2) { background: #ffd6e0; }
+  .card:nth-child(4n+3) { background: #cdeffd; }
+  .card:nth-child(4n+4) { background: #d8f5c8; }
+  .card h2 { margin: 0 0 4px; font-size: 15px; }
+  .card .sum { font-size: 12.5px; margin: 0 0 6px; }
+  .card ul { margin: 0 0 8px; padding-left: 18px; font-size: 12.5px; }
+  .terms span { display: inline-block; background: #fff9; border-radius: 99px; padding: 1px 8px; margin: 0 4px 4px 0; font-size: 11px; }
+  .card .row { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #0008; }
+  .card .row button { padding: 2px 8px; font-size: 11px; }
+  #settings { display: none; padding: 10px 12px; background: #fff; font-size: 12.5px; gap: 6px; flex-direction: column; }
+  #settings label { display: flex; flex-direction: column; gap: 2px; }
+  #settings input, #settings select { padding: 4px 6px; }
+  #draft { padding: 0 12px; }
+  #draft .card { background: #fff1a8; outline: 2px dashed #ff9eb5; transform: none; margin-bottom: 4px; }
+  #draft .actions { display: flex; gap: 6px; margin-top: 8px; }
+  #draft .actions button { flex: 1; }
+  .empty { text-align: center; color: #8a6d5a; margin-top: 40px; font-size: 13px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>📝 Notetaker</h1>
+  <button class="primary" id="scan" title="Start: Ctrl+Shift+S  Stop: Ctrl+Shift+E">Start notes</button>
+  <button id="gear" title="Settings">⚙</button>
+  <button id="close" title="Close">✕</button>
+</header>
+<div id="settings">
+  <label>Engine
+    <select id="provider"><option value="ollama">Local (Ollama)</option><option value="claude">Claude API</option></select>
+  </label>
+  <label>Ollama vision model <input id="ollamaModel"></label>
+  <label>Claude API key <input id="claudeKey" type="password" placeholder="saved encrypted; leave blank to keep"></label>
+  <label>Opacity <input id="opacity" type="range" min="0.3" max="1" step="0.05"></label>
+  <label style="flex-direction:row;align-items:center;gap:6px"><input id="openAtLogin" type="checkbox"> Start when I log in</label>
+  <div style="display:flex;gap:6px"><button id="save">Save</button><button id="export">Export backup</button></div>
+</div>
+<div id="status"></div>
+<div id="draft"></div>
+<div id="list"></div>
+<script src="renderer.js"></script>
+</body>
+</html>
