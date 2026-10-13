@@ -2,6 +2,10 @@
 
 Press a hotkey and Notetaker watches your screen and makes sticky-note summaries. It runs in the background, and its window is hidden from screen sharing and screenshots.
 
+<img src="docs/screenshot.png" alt="Notetaker showing a draft note with Save, Continue and Discard buttons above saved sticky notes" width="320">
+
+*Example notes shown above are made up for the screenshot.*
+
 - `Ctrl+Shift+S` (`Cmd+Shift+S` on Mac): start taking notes
 - `Ctrl+Shift+E` (`Cmd+Shift+E`): stop. A draft note pops up with **Save / Continue / Discard**
 - `Ctrl+Shift+H` (`Cmd+Shift+H`): show or hide the window
